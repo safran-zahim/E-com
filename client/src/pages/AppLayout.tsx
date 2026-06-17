@@ -1,16 +1,17 @@
 import Banner from "../components/Banner"
+import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
+import Home from "./Home"
 
 const AppLayout = () => {
   return (
     <>
     <Banner />
     <Navbar />
-
     <main className="min-h-screen">
-      home page
+    <Home/>
     </main>
-    <footer>footer</footer>
+    <Footer/>
     </>
 )
 }

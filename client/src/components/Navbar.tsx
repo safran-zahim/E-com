@@ -3,7 +3,7 @@
    import { Link, useNavigate } from 'react-router-dom'
 
    const Navbar = () => {
-      const user :any =null
+    const user :any ={name: "Safran Zahim" , email:"safran1600014@gmail.com"}
       const {cartCount, setIsCartOpen} ={
          cartCount:5,
          setIsCartOpen:(_data:any)=>{}
