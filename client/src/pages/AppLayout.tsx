@@ -1,4 +1,5 @@
 import Banner from "../components/Banner"
+import CartSidebar from "../components/CartSidebar"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import Home from "./Home"
@@ -12,6 +13,7 @@ const AppLayout = () => {
     <Home/>
     </main>
     <Footer/>
+    <CartSidebar />
     </>
 )
 }

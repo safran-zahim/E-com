@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import type {Product} from "../types";
 import { CarrotIcon, Plus, Star } from "lucide-react";
+import { useCart } from "./context/CartContext";
 
 interface Props {
   product: Product;
@@ -9,7 +10,7 @@ interface Props {
 const ProductCard = ({product} :Props) => {
 
   const currency =import.meta.env.VITE_CURRENCY_SYMBOL || "$";
-  const {addToCart} = {addToCart:(_data:any)=>{}}
+  const {addToCart} = useCart()
   const navigate = useNavigate()
 
   return (
@@ -37,6 +38,7 @@ const ProductCard = ({product} :Props) => {
           <h3 className="text-sm leading-snug mb-1.5 line-clamp-2">
               {product.name}
           </h3>
+
           {/*Rating*/}
           {product.rating > 0 && (<div className="flex items-center gap-1 mb-2">
               <Star className="size-3 text-app-warning fill-app-warning" />
@@ -47,6 +49,7 @@ const ProductCard = ({product} :Props) => {
                   ({product.reviewCount})
                 </span>
           </div>)}
+
           {/*Price*/}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1 truncate">
@@ -60,6 +63,7 @@ const ProductCard = ({product} :Props) => {
                   <Plus className="size-3.5" />
               </button>
             </div>
+            
       </div>
     </div>
   )
