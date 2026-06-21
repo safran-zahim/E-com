@@ -34,7 +34,7 @@ import { useCart } from './context/CartContext';
                <div className='hidden md:flex items-center gap-6 text-sm text-zinc-600'>
                   <Link to='/'> Home </Link>
                   <Link to='/products'> Products </Link>
-                  <Link to='/deals' className='text-app-orange'> Deals </Link>
+                  <Link to='/FlashDeals' className='text-app-orange'> FlashDeals </Link>
                </div>
                {/* Search   */}
                <form onSubmit={handleSearch} className="hidden sm:flex flex-1 max-w-sm text-xs sm:text-sm">

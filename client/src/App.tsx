@@ -6,7 +6,7 @@ import AppLayout from './pages/AppLayout'
 import ProtectedRoute from './components/ProtectedRoute'
 import Product from './pages/Product'
 import Productpage from './pages/ProductPage'
-import FlashDeals from './pages/Deals'
+import FlashDeals from './pages/FlashDeals'
 import Cheackout from './pages/Cheackout'
 import Address from './pages/Address'
 import MyOrder from './pages/MyOrder'
@@ -25,10 +25,10 @@ const App =() => {
       {/*main pages -with navbar and footer */}
       <Route path='/' element={<AppLayout />} >
         <Route index element={<Home />} />
-        <Route path="product" element={<Product />}/>
-        <Route path="product/:id" element={<Productpage />}/>
+        <Route path="products" element={<Product />}/>
+        <Route path="products/:id" element={<Productpage />}/>
         <Route path="search" element={<search/>}/>
-        <Route path="deals" element={<FlashDeals />} />
+        <Route path="FlashDeals" element={<FlashDeals />} />
         {/*restricting for guest*/}
         <Route element={<ProtectedRoute/>}>
           <Route path="checkout" element={<Cheackout />} />

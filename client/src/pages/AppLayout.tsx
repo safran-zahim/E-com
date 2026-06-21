@@ -1,8 +1,8 @@
+import { Outlet } from "react-router-dom"
 import Banner from "../components/Banner"
 import CartSidebar from "../components/CartSidebar"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
-import Home from "./Home"
 
 const AppLayout = () => {
   return (
@@ -10,7 +10,7 @@ const AppLayout = () => {
     <Banner />
     <Navbar />
     <main className="min-h-screen">
-    <Home/>
+      <Outlet />
     </main>
     <Footer/>
     <CartSidebar />
