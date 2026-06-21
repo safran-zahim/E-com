@@ -49,9 +49,7 @@ const Product = () => {
   const activeCategory = categoriesData.find((c)=>c.slug === category)
   const hasFilters = category || organic || sort || minPrice || maxPrice;
 
-  useEffect(()=>{
-    fetchProducts()
-  },[category , organic , sort , page , minPrice , maxPrice])
+
   
   return (
     <div className="min-h-screen bg-app-cream" >
