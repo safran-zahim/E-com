@@ -1,4 +1,5 @@
-   import { ArrowUpRightIcon, BikeIcon, CalendarHeartIcon, ChevronDownIcon, LogOutIcon, MapPinIcon, MenuIcon, SearchIcon, ShieldIcon, ShoppingCartIcon, UserIcon, XIcon } from 'lucide-react'
+
+import { ArrowUpRightIcon, BikeIcon, CalendarHeartIcon, ChevronDownIcon, LogOutIcon, MapPinIcon, MenuIcon, SearchIcon, ShieldIcon, ShoppingCartIcon, UserIcon, XIcon } from 'lucide-react'
    import React, { useState } from 'react';
    import { Link, useNavigate } from 'react-router-dom'
 import { useCart } from './context/CartContext';
@@ -10,10 +11,10 @@ import { useCart } from './context/CartContext';
       const [userMenuOpen, setUserMenuOpen] = useState(false)
       const navigate = useNavigate()
 
-      const handleSearch=(e :React.SubmitEvent)=>{
+      const handleSearch=(e :React.FormEvent)=>{
          e.preventDefault()
          if(searchQuery.trim()){
-            navigate('/search?q=${encodeUriComponent(searchQuery.trim()}')
+            navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`)
             setSearchQuery('')
          }
       }
@@ -95,16 +96,16 @@ import { useCart } from './context/CartContext';
           </div>
         )}
         
-        <div onClick={() => setUserMenuOpen(false)}>
-          {!user && <Link to='/login' className='dropdown-link'><UserIcon size={16} /> Sign In</Link>}
-          {user && <Link to='/orders' className='dropdown-link'><CalendarHeartIcon size={16} /> My Orders</Link>}
-          {user && <Link to='/addresses' className='dropdown-link'><MapPinIcon size={16} /> Addresses </Link>}
+        <div>
+          {!user && <Link to='/login' onClick={() => setUserMenuOpen(false)} className='dropdown-link'><UserIcon size={16} /> Sign In</Link>}
+          {user && <Link to='/orders' onClick={() => setUserMenuOpen(false)} className='dropdown-link'><CalendarHeartIcon size={16} /> My Orders</Link>}
+          {user && <Link to='/addresses' onClick={() => setUserMenuOpen(false)} className='dropdown-link'><MapPinIcon size={16} /> Addresses </Link>}
           
-          <Link className='dropdown-link md:hidden' to="/products"> <ArrowUpRightIcon size={16} /> Products </Link>
-          <Link className='dropdown-link md:hidden' to="/deals"> <ArrowUpRightIcon size={16} /> Deals </Link>
+          <Link className='dropdown-link md:hidden' to="/products" onClick={() => setUserMenuOpen(false)}> <ArrowUpRightIcon size={16} /> Products </Link>
+          <Link className='dropdown-link md:hidden' to="/FlashDeals" onClick={() => setUserMenuOpen(false)}> <ArrowUpRightIcon size={16} /> Deals </Link>
           
           {user?.isAdmin && (
-            <Link to='/admin/products' className='dropdown-link'>
+            <Link to='/admin/products' onClick={() => setUserMenuOpen(false)} className='dropdown-link'>
               <ShieldIcon size={16} className='text-app-orange-dark' />
               <span className='text-app-orange-dark'> Admin Panel</span>
             </Link>

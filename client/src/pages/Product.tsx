@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom"
-import type { Product } from "../types";
+import type { Product as ProductType } from "../types";
 import { categoriesData, dummyProducts } from "../assets/assets";
 import { ChevronDown, Home, SlidersHorizontal, XIcon } from "lucide-react";
 import ProductCard from "../components/ProductCard";
@@ -9,7 +9,7 @@ import FilterPanel from "../components/FilterPanel";
 
 const Product = () => {
   const [searchParams , setSearchParams] = useSearchParams();
-  const [Products, setProducts] = useState<Product[]>([])
+  const [Products, setProducts] = useState<ProductType[]>([])
   const [totalPages,setTotalPage] =useState(1)
   const [loading,setLoading] = useState(true)
   const [mobileFilterOpen,setMobileFilterOpen] = useState(false)
@@ -23,9 +23,41 @@ const Product = () => {
   const maxPrice = searchParams.get("maxPrice") || "";
 
   const fetchProducts = async () => {
-    setLoading(true)
-    setProducts(dummyProducts.filter((p)=>p.category === category || category === ""));
-    setLoading(false)
+    setLoading(true);
+    
+    // Simulate network delay
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    let filtered = dummyProducts.filter(p => p.stock > 0);
+
+    if (category) {
+      filtered = filtered.filter(p => p.category === category);
+    }
+    if (organic === "true") {
+      filtered = filtered.filter(p => p.isOrganic === true);
+    }
+    if (minPrice) {
+      filtered = filtered.filter(p => p.price >= Number(minPrice));
+    }
+    if (maxPrice) {
+      filtered = filtered.filter(p => p.price <= Number(maxPrice));
+    }
+
+    if (sort === "price_asc") {
+      filtered.sort((a, b) => a.price - b.price);
+    } else if (sort === "price_desc") {
+      filtered.sort((a, b) => b.price - a.price);
+    } else if (sort === "rating") {
+      filtered.sort((a, b) => b.rating - a.rating);
+    } else if (sort === "name") {
+      filtered.sort((a, b) => a.name.localeCompare(b.name));
+    } else {
+      // Default to newest
+      filtered.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    }
+
+    setProducts(filtered);
+    setLoading(false);
   }
 
   useEffect(()=>{

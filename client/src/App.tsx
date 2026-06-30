@@ -5,9 +5,10 @@ import Home from './pages/Home'
 import AppLayout from './pages/AppLayout'
 import ProtectedRoute from './components/ProtectedRoute'
 import Product from './pages/Product'
+import SearchResults from './pages/SearchResults'
 import Productpage from './pages/ProductPage'
 import FlashDeals from './pages/FlashDeals'
-import Cheackout from './pages/Cheackout'
+import Checkout from './pages/Checkout'
 import Address from './pages/Address'
 import MyOrder from './pages/MyOrder'
 import OrderTracking from './pages/OrderTracking'
@@ -27,14 +28,14 @@ const App =() => {
         <Route index element={<Home />} />
         <Route path="products" element={<Product />}/>
         <Route path="products/:id" element={<Productpage />}/>
-        <Route path="search" element={<search/>}/>
+        <Route path="search" element={<SearchResults />}/>
         <Route path="FlashDeals" element={<FlashDeals />} />
         {/*restricting for guest*/}
         <Route element={<ProtectedRoute/>}>
-          <Route path="checkout" element={<Cheackout />} />
-          <Route path="address" element={<Address />} />
-          <Route path="Orders" element={<MyOrder />} />
-          <Route path="order/:id" element={<OrderTracking/>} />
+          <Route path="checkout" element={<Checkout />} />
+          <Route path="addresses" element={<Address />} />
+          <Route path="orders" element={<MyOrder />} />
+          <Route path="orders/:id" element={<OrderTracking/>} />
         </Route>
       </Route>
 

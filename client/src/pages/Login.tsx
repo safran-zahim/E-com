@@ -1,4 +1,5 @@
-import { useState, FormEvent } from 'react'
+import { useState } from 'react'
+import type { FormEvent } from 'react'
 import { heroSectionData } from '../assets/assets'
 import { BikeIcon, UserIcon ,Mail, LockIcon, Loader2Icon } from 'lucide-react'
 import { Link } from 'react-router-dom'
