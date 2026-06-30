@@ -3,12 +3,12 @@ import { useEffect, useState } from "react"
 import type { Product } from "../types"
 import { dummyProducts } from "../assets/assets"
 import { Zap } from "lucide-react"
-import Loarding from "../components/Loarding"
+import Loading from "../components/Loading"
 import ProductCard from "../components/ProductCard"
 
 const FlashDeals = () => {
   const [products,setProducts] = useState<Product[]>([])
-  const [loarding,setLoading] = useState(true)
+  const [Loading,setLoading] = useState(true)
 
   useEffect(()=>{
     setProducts(dummyProducts.filter((p)=>p.stock>0))
@@ -32,7 +32,7 @@ const FlashDeals = () => {
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px:6 lg:px-8 py-8">
-        {loarding ? (<Loarding />):(
+        {Loading ? (<Loading />):(
           products.length === 0 ? (
             <div className="text-center py-16">
               <Zap className="size-16 text-app-border mx-auto mb-4" />

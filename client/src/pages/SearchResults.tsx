@@ -9,7 +9,7 @@ import ProductCard from "../components/ProductCard"
 const SearchResults = () => {
 
     const [products,setProducts] = useState<Product[]>([])
-    const [loarding,setLoading] = useState(true)
+    const [Loading,setLoading] = useState(true)
     const [searchParams] = useSearchParams()
     const query = searchParams.get('q') || "" ;
 
@@ -33,11 +33,11 @@ const SearchResults = () => {
 
         <div className="mb-8">
           <h1 className="text-2xl font-semibold text-app-green mb-1"> Results for "{query}" </h1>
-          <p className="text-sm text-app-text-light">{loarding ? "Searching" : `${products.length} Results`}</p>
+          <p className="text-sm text-app-text-light">{Loading ? "Searching" : `${products.length} Results`}</p>
         </div>
 
         <div>
-          {loarding ? (
+          {Loading ? (
             <div className="text-center py-12 text-app-text-light">
               loading ...
             </div>
@@ -46,14 +46,12 @@ const SearchResults = () => {
               {products.map((product) => (
                 <ProductCard key={product._id} product={product} />
               ))}
-              {!loarding && products.length === 0 && (
+              {!Loading && products.length === 0 && (
                 <div className="col-span-full text-center py-12 text-app-text-light w-full">
-                  No products found.
-                  <br />
+                  <p className="mb-4">No products found.</p>
                   <Link to="/products" className="py-2.5 px-5 inline-flex bg-app-green text-white text-sm font-medium rounded-xl hover:bg-app-green-light transition-colors" >
                     View All Products
                   </Link>
-
                 </div>
               )}
             </div>

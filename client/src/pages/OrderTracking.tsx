@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Navigate, useNavigate, useParams } from "react-router-dom"
 import type { Order } from "../types"
 import { dummyDashboardOrdersData } from "../assets/assets"
-import Loarding from "../components/Loarding"
+import Loading from "../components/Loading"
 import { ArrowLeftIcon, MapPin, PhoneIcon } from "lucide-react"
 import OrderOTP from "../components/OrderTracking/OrderOTP"
 import LiveMap from "../components/OrderTracking/LiveMap"
@@ -14,15 +14,15 @@ const OrderTracking = () => {
   const {id}= useParams()
   const navigate = useNavigate()
 const [order, setOrder] = useState<Order| null>(null)
-const [loarding,setLoarding] = useState(true)
+const [Loading,setLoading] = useState(true)
 const [liveLocation, setLiveLocation] = useState<{lat: number; lng: number} | null>(null)
 
 useEffect(()=>{
   setOrder(dummyDashboardOrdersData.find((o)=>o._id === id ) as any)
-  setLoarding(false)
+  setLoading(false)
 },[ id, navigate])
 
-if (loarding) return <Loarding />
+if (Loading) return <Loading />
 if (!order) null
 
   return (

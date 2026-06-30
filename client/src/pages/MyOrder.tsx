@@ -3,7 +3,7 @@ import type { Order } from '../types';
 import { Link, useSearchParams } from 'react-router-dom';
 import { dummyDashboardOrdersData, statusColors } from '../assets/assets';
 import { useCart } from '../components/context/CartContext';
-import Loarding from '../components/Loarding';
+import Loading from '../components/Loading';
 import { CalendarIcon, ChevronRightIcon, PackageIcon } from 'lucide-react';
 
 const MyOrder = () => {
@@ -66,7 +66,7 @@ const MyOrder = () => {
         <div>
           {
             loading ? (
-              <Loarding />
+              <Loading />
             ) : orders.length === 0 ? (
                 <div className='text-center py-16 '>
                     <PackageIcon  className='size-16 text-app-border mx-auto mb-4 '/>

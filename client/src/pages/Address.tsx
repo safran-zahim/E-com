@@ -1,7 +1,7 @@
 import { MapPinIcon, PlusIcon } from "lucide-react"
 import type { Address as AddressType } from "../types"
 import React, { useEffect, useState } from "react"
-import Loarding from "../components/Loarding"
+import Loading from "../components/Loading"
 import AddressCard from "../components/AddressCard"
 import { dummyAddressData } from "../assets/assets"
 import AddressForm from "../components/AddressForm"
@@ -9,7 +9,7 @@ import AddressForm from "../components/AddressForm"
 const Address = () => {
 
   const [address , setAddress] =useState<AddressType[]>([])
-  const [loarding , setLoarding] =useState(true)
+  const [loading , setLoading] =useState(true)
 const [showForm, setShowForm] = useState(false);
 const [editingId, setEditingId] = useState<string | null>(null);
 const [form , setForm ] = useState({
@@ -51,7 +51,7 @@ const onEditHandler =(add : AddressType) =>{
 
 useEffect(()=>{
   setAddress(dummyAddressData)
-  setTimeout(()=> setLoarding(false),1000)
+  setTimeout(()=> setLoading(false),1000)
 },[])
 
 
@@ -71,8 +71,8 @@ useEffect(()=>{
     {showForm && <AddressForm resetForm={resetForm} handleSubmit={handleSubmit} form={form} setForm={setForm} editingId={editingId}/>}
     {/*Addesslist*/}
     {
-      loarding ? (
-        <Loarding/>
+      loading ? (
+        <Loading/>
       ): address.length === 0 ? (
         <div className="text-center py-16">
           <MapPinIcon className="size-16 text-app-border mx-auto mb-4" />

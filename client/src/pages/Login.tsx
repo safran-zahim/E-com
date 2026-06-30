@@ -11,11 +11,11 @@ const Login = () => {
   const [name ,  setName] = useState('')
   const [email , setEmail] = useState('')
   const [password , setPassword ] = useState('')
-  const [loarding , setLoarding] = useState(false)
+  const [Loading , setLoading] = useState(false)
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) =>{
     e.preventDefault()
-    setLoarding(true)
+    setLoading(true)
     setTimeout(()=> window.location.href = '/' , 1000)
 
   }
@@ -107,8 +107,8 @@ const Login = () => {
                     />
                   </div>
               </label>
-              <button type='submit' disabled={loarding} className="flex-center w-full py-3 bg-green-950 text-white font-semibold rounded-xl hover:bg-green-800 transition-colors dissabled:opacity-50">
-                { loarding? <Loader2Icon className='animate-spin'/> : isLoginState ? "Sign in" : "Sign up" }
+              <button type='submit' disabled={Loading} className="flex-center w-full py-3 bg-green-950 text-white font-semibold rounded-xl hover:bg-green-800 transition-colors dissabled:opacity-50">
+                { Loading? <Loader2Icon className='animate-spin'/> : isLoginState ? "Sign in" : "Sign up" }
               </button>
           </form>
       </div>

@@ -12,6 +12,13 @@ import Checkout from './pages/Checkout'
 import Address from './pages/Address'
 import MyOrder from './pages/MyOrder'
 import OrderTracking from './pages/OrderTracking'
+import AdminDashboard from './pages/admin/AdminDashboard'
+import AdminLayout from './pages/admin/AdminLayout'
+import AdminProducts from './pages/admin/AdminProducts'
+import AdminProductForm from './pages/admin/AdminProductForm'
+import AdminOrders from './pages/admin/AdminOrders'
+import AdminDeliveryPartners from './pages/admin/AdminDeliveryPartners'
+import DeliveryLogin from './pages/delivery/DeliveryLogin'
 
 
 
@@ -38,6 +45,19 @@ const App =() => {
           <Route path="orders/:id" element={<OrderTracking/>} />
         </Route>
       </Route>
+      {/*Admin pages*/}
+    <Route path='/admin' element={<AdminLayout />}>
+        <Route index element={<AdminDashboard />}/>
+        <Route path="products" element={<AdminProducts />}/>
+        <Route path="products/new" element={<AdminProductForm />}/>
+        <Route path="products/:id/edit" element={<AdminProductForm />}/>
+        <Route path="orders" element={<AdminOrders />}/>
+        <Route path="delivery-partners" element={<AdminDeliveryPartners />}/>
+    </Route>
+
+    <Route path="/delivery/login" element={<DeliveryLogin />}>
+      <Route path='delivery' />
+    </Route>
 
     </Routes>
       

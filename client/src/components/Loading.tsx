@@ -1,6 +1,6 @@
 import { Loader2Icon } from "lucide-react";
 
-const Loarding = () => {
+const Loading = () => {
   return (
     <div className='flex-center min-h-96 h-full w-full'>
         <Loader2Icon className="animate-spin size-8 text-green-950 "/>      
@@ -8,4 +8,4 @@ const Loarding = () => {
   )
 }
 
-export default Loarding
+export default Loading

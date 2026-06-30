@@ -4,7 +4,7 @@ import type { Product as ProductType } from "../types";
 import { categoriesData, dummyProducts } from "../assets/assets";
 import { ChevronDown, Home, SlidersHorizontal, XIcon } from "lucide-react";
 import ProductCard from "../components/ProductCard";
-import Loarding from "../components/Loarding";
+import Loading from "../components/Loading";
 import FilterPanel from "../components/FilterPanel";
 
 const Product = () => {
@@ -135,7 +135,7 @@ const Product = () => {
             </div>
           {/*Products Grid*/}
           {loading ? (
-            <Loarding />
+            <Loading />
           )
           : Products.length === 0 ? (
             <div className="text-center py-16">

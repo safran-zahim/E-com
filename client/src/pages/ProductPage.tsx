@@ -4,7 +4,7 @@ import { useCart } from '../components/context/CartContext';
 import { HomeIcon, ArrowLeftIcon, LeafIcon, StarIcon, PlusIcon, MinusIcon, ShoppingCartIcon, ArrowRightIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import type { Product } from '../types';
-import Loarding from '../components/Loarding';
+import Loading from '../components/Loading';
 import DummyReviewsSection from '../assets/DummyReviewsSection';
 import ProductCard from '../components/ProductCard';
 
@@ -38,7 +38,7 @@ const ProductPage = () => {
     setLoading(false)
   }, [id, navigate])
 
-  if (loading) return <Loarding />
+  if (loading) return <Loading />
   if (!product) return null;
 
   const cartItem = items.find((item) => item.product._id === product._id)
